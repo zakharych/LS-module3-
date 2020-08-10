@@ -49,7 +49,14 @@ block content
             p   Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
           .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
   .middle-section
-  
+
+
+    .triangles.triangles_top
+      svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+        polygon(points="0,0 0,100 1000,100")
+      svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+        polygon(points="0,100 1000,100 1000,0")
+      
     section.values
       .container  
         .values__wrapper
@@ -79,3 +86,8 @@ block content
                                 stop(offset="0%" stop-color="#5500f2")
                                 stop(offset="100%" stop-color="#8f00ef")
                             .skill__title #{skill}
+    .triangles.triangles__bottom
+      svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+        polygon(points="0,0 0,100 1000,100")
+      svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+        polygon(points="0,100 1000,100 1000,0")

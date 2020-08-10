@@ -21,15 +21,15 @@ block content
                   +icon(item, "social__icon")
         .userinfo 
           .userinfo__title Личный сайт #[br] веб разработчика 
-          .userinfo__name Владимир Астаханов
+          .userinfo__name Владимир #[br]  Астаханов
         .hero__button-buttons
           button.scroll-down-btn Скролл
     section.about
       .container.about-container
         .about__user
           .user
-            .user__avatat
-              .user__avaatar-style
+            .user__avatar
+              .user__avatar-style
                 +image("content/user.jpg", 'user__avatar-pic')
                 - 
                   var userInfo = [
@@ -49,8 +49,10 @@ block content
             p   Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
           .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
   .middle-section
-      section.values
-        .container  
+  
+    section.values
+      .container  
+        .values__wrapper
           .values__title  
             .values__title-text Чем я могу быть полезен вам
             .values__title-content 
@@ -58,22 +60,22 @@ block content
           .values__widget             
             - 
               var skillsCategories = [
-                  ["Frontend", ["HTML5", "CSS3", "Javascript", "Vue.js"]],
-                  ["Workflow", ["GIT", "Terminal", "Gulp", "Webpack"]]
-                ];
+                ["Frontend", ["HTML5", "CSS3", "Javascript", "Vue.js"]],
+                ["Workflow", ["GIT", "Terminal", "Gulp", "Webpack"]]
+                  ];
             ul.skills
               each category in skillsCategories
                 li.skills__item 
                   .skills-row
-                      .skills-row__title #{category[0]}
-                      ul.skills-row__list
-                        each skill in category[1]
-                          li.skill-row__item
-                            .skill 
-                              svg(viewBox="0 0 100 100").skill__circle-shape
-                                circle(cx="50" cy="50" r="40").skill__circle.skill__circle--layer--under
-                                circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above
-                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                                  stop(offset="0%" stop-color="#5500f2")
-                                  stop(offset="100%" stop-color="#8f00ef")
-                              .skill__title #{skill}
+                    .skills-row__title #{category[0]}
+                    ul.skills-row__list
+                      each skill in category[1]
+                        li.skill-row__item
+                          .skill 
+                            svg(viewBox="0 0 100 100").skill__circle-shape
+                              circle(cx="50" cy="50" r="40").skill__circle.skill__circle--layer--under
+                              circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above
+                              linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                                stop(offset="0%" stop-color="#5500f2")
+                                stop(offset="100%" stop-color="#8f00ef")
+                            .skill__title #{skill}

@@ -1,0 +1,57 @@
+.skill {
+    position: relative;
+    width: 166px;
+    height: 166px;
+
+}
+
+.skill__circle {
+    fill: transparent;
+
+    &--layer--under {
+        stroke: #eaeaea;
+        stroke-width: 5px;
+
+    }
+    &_above {
+        stroke-width: 12px;
+        stroke-dasharray: 251;
+        stroke-dashoffset: 120;
+    }
+
+}
+
+.skill__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 18px;
+    color: rgba($text-color, .5);
+    padding: 14px;
+}
+
+
+.skills__item {
+    margin-bottom: 30px;
+  }
+
+  .skills-row__title {
+    margin-bottom: 26px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .skills-row__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4%;
+    @include phones {
+      justify-content: center;
+    }
+  }
+  
+  .skills-row__item {
+    margin-left: 4%;
+  }

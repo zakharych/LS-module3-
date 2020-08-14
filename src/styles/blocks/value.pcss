@@ -1,13 +1,36 @@
+.values  {
+  margin-bottom: 160px;
+}
+.values__wrapper {
+  width: 66%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  position: relative;
+
+  &::before {
+    content: url(~images/decor/bag.jpg);
+    position: absolute;
+    top: 16%;
+    left: -66%;
+    z-index: -5;
+  }
+
+}
+
+.values__title {
+  width: 61%;
+  margin-bottom: 80px;
+}
 
 .values__title-text {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 55px;
-  }
-  
-  .values__title-content  {
-    color: rgba($text-color, .5);
-    font-weight: 600;
-    line-height: 1.8;
-  }
-  
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 55px;
+}
+
+.values__title-content {
+  color: rgba($text-color, .5);
+  font-weight: 600;
+  line-height: 1.8;
+}

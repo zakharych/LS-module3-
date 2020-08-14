@@ -1,3 +1,7 @@
+.skills {
+  padding-left: 126px;
+}
+
 .skill {
     position: relative;
     width: 166px;
@@ -46,12 +50,14 @@
   .skills-row__list {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -4%;
-    @include phones {
-      justify-content: center;
-    }
+   
   }
   
   .skills-row__item {
     margin-left: 4%;
+    margin-right: 36px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }

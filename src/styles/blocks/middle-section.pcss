@@ -1,4 +1,20 @@
 .middle-section {
-    padding: 140px 0;
-    position: relative;
+  padding-top: 152px;
+  padding-bottom: 150px;
+  position: relative;
+  
+  @include desktop{
+    padding-top: 92px;
+    padding-bottom: 8px;
   }
+
+  @include tablets {    
+    padding-top: 124px;
+    padding-bottom: 1px;
+  }
+
+  @include phones {
+    padding-top: 76px;
+    padding-bottom: 1px;
+  }
+}

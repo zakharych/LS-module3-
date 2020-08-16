@@ -1,63 +1,126 @@
 .skills {
   padding-left: 126px;
+
+  @include desktop {
+    padding-left: 86px;
+  }
+
+  @include tablets {
+    padding-left: 0;
+  }
 }
 
 .skill {
-    position: relative;
-    width: 166px;
-    height: 166px;
+  position: relative;
+  width: 166px;
+  height: 166px;
+
+  @include phones {
+    width: 154px;
+    height: 154px;
+
+  }
 
 }
 
 .skill__circle {
-    fill: transparent;
+  fill: transparent;
 
-    &--layer--under {
-        stroke: #eaeaea;
-        stroke-width: 5px;
+  &--layer--under {
+    stroke: #eaeaea;
+    stroke-width: 5px;
+
+    @include tablets {
+      stroke-width: 8px;
+    }
+  }
+
+  &_above {
+    stroke-width: 12px;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 120;
+
+    @include tablets {
+      stroke-width: 16px;
+    }
+
+    @include phones {
+      stroke-width: 8px;
 
     }
-    &_above {
-        stroke-width: 12px;
-        stroke-dasharray: 251;
-        stroke-dashoffset: 120;
-    }
+  }
 
 }
 
 .skill__title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
-    font-size: 18px;
-    color: rgba($text-color, .5);
-    padding: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+  color: rgba($text-color, .5);
+  padding: 14px;
 }
 
 
 .skills__item {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    margin-bottom: 50px;
+  }
+
+  @include tablets {
+    margin-bottom: 60px;
+  }
+
+}
+
+.skills-row__title {
+  margin-bottom: 26px;
+  font-size: 24px;
+  font-weight: 700;
+
+  @include tablets {
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  @include phones {
+    text-align: center;
     margin-bottom: 30px;
   }
+}
 
-  .skills-row__title {
-    margin-bottom: 26px;
-    font-size: 24px;
-    font-weight: 700;
-  }
-  
-  .skills-row__list {
-    display: flex;
-    flex-wrap: wrap;
-   
-  }
-  
-  .skills-row__item {
-    margin-left: 4%;
-    margin-right: 36px;
+.skills-row__list {
+  display: flex;
+  flex-wrap: wrap;
 
-    &:last-child {
-      margin-right: 0;
-    }
+  @include tablets {
+    justify-content: space-evenly;
+    padding: 0 6%;
   }
+
+  @include phones {
+    padding: 0;;
+  }
+
+}
+
+.skill-row__item {
+  // margin-right: 36px;
+  margin-right: 5%;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include tablets {
+    margin: 0;
+  }
+}

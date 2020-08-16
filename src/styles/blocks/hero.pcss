@@ -5,9 +5,27 @@
     justify-content: space-between;
     padding: 60px 0 20px;
     margin-bottom: 160px;
+
+    @include desktop {
+        margin-bottom: 408px;
+    }
+
+    @include tablets {
+        height: 100%;
+        margin-bottom: 570px;
+
+    }
+
+    @include phones {
+        margin-bottom: 300px;
+    }
 }
 
 .hero__button-buttons {
     display: flex;
     justify-content: center;
+
+    @include tablets {
+        display: none;
+    }
 }

@@ -3,6 +3,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include desktop {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    @include tablets {
+        flex-direction: column;
+
+    }
 }
 
 .userinfo__title {
@@ -12,10 +22,34 @@
     margin-bottom: 20px;
     /* line-height: 1; */
     text-align: center;
+
+    @include desktop {
+        margin-right: 36px;
+        line-height: 1.8;
+        text-align: right;
+    }
+
+    @include tablets {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    @include phones {
+        font-size: 14px;
+    }
 }
 
 .userinfo__name {
     font-weight: 800;
-     font-size: 72px;
-     line-height: 1;
+    font-size: 72px;
+    line-height: 1;
+
+    @include tablets {
+        font-size: 52px;
+    }
+
+    @include phones {
+        font-size: 36px;
+        line-height: 1.24;
+    }
 }

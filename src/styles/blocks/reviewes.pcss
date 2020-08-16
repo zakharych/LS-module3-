@@ -1,53 +1,134 @@
 .reviwes {
     background: url(~images/bg/budda.jpg) center top / cover no-repeat;
+
+    @include desktop {
+        background-size: 200%;
+    }
+
+    
 }
-.round-btn{
+
+
+.round-btn {
     width: 50px;
     height: 50px;
     border: 1px solid currentColor;
     position: relative;
     border-radius: 50%;
     margin-right: 30px;
-    &:last-child {
-      margin-right: 0;
-    }
-    &:before {
-      content: "";
-      width: 8px;
-      height: 10px;
-      display: block;
-      background: svg-load('arrow-down.svg', fill=$text-color) center center / contain no-repeat;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &--right {
-      &:before {
-        transform: translate(-50%, -50%) rotate(-180deg);
-      }
-    }
-  }
 
- .section-title {
-     margin-right: 120px;
- } 
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:before {
+        content: "";
+        width: 8px;
+        height: 10px;
+        display: block;
+        background: svg-load('arrow-down.svg', fill=$text-color) center center / contain no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &--right {
+        &:before {
+            transform: translate(-50%, -50%) rotate(-180deg);
+        }
+    }
+}
+
+.section-title {
+    margin-right: 120px;
+
+    @include desktop {
+        margin-right: 150px;
+    }
+
+    @include tablets {
+        margin-right: 32px;
+    }
+
+    @include phones {
+        margin-right: 0;
+    }
+}
+
 .slider {
     padding-top: 262px;
     padding-bottom: 250px;
+
+    @include desktop {
+        padding-top: 250px;
+
+        padding-bottom: 214px;
+
+    }
+
+    @include tablets {
+
+        padding-bottom: 276px;
+    }
+
+    @include phones {
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
 }
+
 .slider__item {
     width: 29%;
     margin-right: 131px;
+
+    &:last-child {
+        margin: 0;
+    }
+
+    @include desktop {
+        width: 35%;
+        margin-right: 200px;
+    }
+
+    @include tablets {
+        margin-right: 100px;
+        width: 50%;
+    }
+
+    @include phones {
+        width: 100%;
+        font-weight: 600;
+        font-size: 14px;
+    }
 }
 
 .slider__header {
     display: flex;
+
+    @include phones {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 66px;
+    }
 }
 
 .slider__content {
     padding: 0 7%;
     display: flex;
+
+    @include desktop {
+        padding: 0 9%;
+
+    }
+
+    @include tablets {
+        padding: 0 6%;
+    }
+
+    @include phones {
+        padding: 0;
+    }
 }
 
 .user-display__avatar-style {
@@ -56,6 +137,13 @@
     overflow: hidden;
     border-radius: 50%;
     margin-right: 30px;
+
+    @include phones {
+        width: 85px;
+        height: 85px;
+
+        margin-right: 14px;
+    }
 }
 
 .quote__text {
@@ -64,17 +152,36 @@
     color: rgba(70, 78, 98, 0.6);
     line-height: 1.8;
     margin-bottom: 30px;
+
+    @include desktop {
+        line-height: 2;
+    }
+
+    @include tablets {
+        margin-bottom: 18px;
+    }
+
+    @include phones {
+        line-height: 1.7;
+    }
 }
 
 .user-display__avatar {
     display: flex;
 }
-
+.user-display__name {
+    padding: 18px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .user-desplay__name {
     font-weight: bold;
     font-size: 18px;
     color: #464E62;
-    margin: 10px 0;
+    margin-bottom: 10px;
+
+    
 }
 
 .user-display__occ {

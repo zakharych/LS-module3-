@@ -153,7 +153,7 @@
         }
     }
 
-    &_prev {
+    &--prev {
         &:before {
             transform: translate(-50%, -50%) rotate(-270deg);
         }
@@ -165,7 +165,7 @@
         }
     }
 
-    &_next {
+    &--next {
         &:active {
             &:before {
                 margin-top: -3px;
@@ -292,5 +292,13 @@
 
     @include phones {
         font-size: 15px;
+    }
+}
+
+.thumbs__item {
+
+    &.active,
+    &:hover {
+        outline: 3px solid #f29400;
     }
 }

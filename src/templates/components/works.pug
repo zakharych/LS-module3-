@@ -1,40 +1,62 @@
 script(type="text/x-template")#preview-container
-    .works__cont    
-        display
-        info
+    .works__preview(:data-slide="currentIndex + 1")
+        display(
+            :currentWork="currentWork",
+            :works="works",
+            :currentIndex="currentIndex",
+            @slide="slide",
+    
+        )
+        info(
+            :currentWork="currentWork"
+        )
 
 script(type="text/x-template")#preview-display
-    .works__preview(data-slide="1")
-        .works__preview-pic
-            +image("content/slider-1.jpg", "works__preview-img")
-            .works__preview-tumbs
-                thumbs
-            .works__privew-btns
-                btns
+    .works__preview-pic
+        img(:src="currentWork.photo").works__preview-img
+        .works__preview-tumbs
+            thumbs(
+                :works="reveseWorks",
+                :currentWork="currentWork",
+
+            )
+        .works__privew-btns
+            btns(                
+                @slide="$emit('slide',$event)" 
+            )
 
 script(type="text/x-template")#preview-thumbs
     ul.thumbs
-        - for (var i = 3; i > 1; i--)
-            li.thumbs__item
-                a(href="#").thumbs__link
-                    +image(`content/slider-${i}.jpg`, 'thumb__img')
+        li.thumbs__item(
+            v-for="slide in works" :key="slide.id"
+            :class="{active: currentWork.id === slide.id}")
+            a.thumbs__link
+                img(:src="slide.photo").thumb__img
 
 script(type="text/x-template")#preview-btns
     .square-btns
-        button(type="button").square-btn__item.square-btn__item--next
-        button(type="button").square-btn__item.square-btn__item--prev
+        button(
+            type="button"
+            @click="$emit('slide','next')" 
+        ).square-btn__item.square-btn__item--next
+        button(
+            type="button"
+            @click="$emit('slide','prev')" 
+        ).square-btn__item.square-btn__item--prev
 
 script(type="text/x-template")#preview-info
     .works__preview-info 
-        tags
-        .works__preview-title Сайт школы образования 
+        tags(
+            :tags="tagsArray"
+        )
+        .works__preview-title {{currentWork.title}}
         .works__preview-desc 
-            p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-        a(href="").iconed-link  Посмотреть сайт
+            p {{currentWork.desc}}
+        a(:href="currentWork.link").iconed-link  Посмотреть сайт
 
 script(type="text/x-template")#preview-tags
-    - var tags = ["HTML", "CSS", "JavaScript"];
-        ul.tags
-            each item in tags
-                li.tags__item
-                    .tag #{item}
+    ul.tags
+        li.tags__item(
+            v-for="tag in tags"
+        )
+            .tag {{tag}}

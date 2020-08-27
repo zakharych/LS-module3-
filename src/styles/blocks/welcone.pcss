@@ -1,4 +1,13 @@
 .welcome-section {
     background: url(~images/bg/hero.jpg) center top / cover no-repeat;
     padding-bottom: 230px;
+
+    @include desktop {
+        padding-bottom: 280px;
+    }
+
+    @include tablets {
+        
+        padding-bottom: 122px;
+    }
 }

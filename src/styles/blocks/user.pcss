@@ -7,7 +7,20 @@
   display: flex;
   justify-content: center;
   margin-bottom: 70px;
+
+  @include desktop   {
+    margin-bottom: 86px;
+  }
+
+  @include tablets {
+    margin-bottom: 56px;
+  }
+
+  @include phones {
+    margin-bottom: 38px;
+  }
 }
+
 .user__avatar-style {
   width: 200px;
   height: 200px;
@@ -21,6 +34,10 @@
   font-weight: 600;
   width: 100%;
 
+  @include tablets {
+    line-height: 1.1;
+  }
+
   td {
     padding-bottom: 15px;
   }
@@ -32,4 +49,8 @@
 
 .user__data-title {
   color: rgba($text-color, .3);
-}
+
+  @include desktop   {
+    width: 53%;
+  }
+}   

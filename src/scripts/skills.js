@@ -1,71 +1,40 @@
 import Vue from "vue";
-import axios from "axios";
 
-const baseUrl = process.env.BASE_URL;
+const skillsItem = {
+  props: ["skill"],
+  template:"#skills-item",
+  mounted(){
+    const circle = this.$refs["colored-circle"];
+    const dashArray = parseInt(
+      getComputedStyle(circle).getPropertyValue("stroke-dasharray")
+    );
+    
+    const percent = (dashArray / 100) * (100 - this.skill.percent);
 
-axios.defaults.baseURL = baseUrl;
-
-const skill = {
-  template: "#skill",
-  props: {
-    skillName: String,
-    skillPercents: Number
-  },
-  methods: {
-    drawCircle() {
-      const circle = this.$refs["color-circle"];
-      const dashOffset = parseInt(
-        getComputedStyle(circle).getPropertyValue("stroke-dasharray")
-      );
-      const percent = (dashOffset / 100) * (100 - this.skillPercents);
-
-      circle.style.strokeDashoffset = percent;
-    }
-  },
-  mounted() {
-    this.drawCircle();
+    circle.style.strokeDashoffset = percent;
   }
 };
 
 const skillsRow = {
-  template: "#skills-row",
+  props: ["category"],
+  template:"#skills-row",
   components: {
-    skill
+    skillsItem
   },
-  props: {
-    skills: Array,
-    category: Object
-  },
-  computed: {
-    categorySkills() {
-      const matchSkillAndCatId = skill => skill.category === this.category.id;
-      return this.skills.filter(matchSkillAndCatId);
-    }
-  }
 };
 
 new Vue({
   el: "#skills-component",
+  template: "#skills-list",
   components: {
     skillsRow
   },
-  data: {
-    skills: [],
-    categories: []
-  },
-  methods: {
-    async fetchCategories() {
-      const { data: categories } = await axios.get("/categories/1");
-      this.categories = categories;
-    },
-    async fetchSkills() {
-      const { data: skills } = await axios.get("/skills/1");
-      this.skills = skills;
+  data(){
+    return{
+      skills: []
     }
   },
-  async created() {
-    await this.fetchCategories();
-    await this.fetchSkills();
-  },
-  template: "#skills-list"
-});
+  created() {
+    this.skills = require("../data/skills.json")
+  }
+})

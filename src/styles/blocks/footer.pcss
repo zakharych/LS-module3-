@@ -7,20 +7,40 @@
     display: flex;
     justify-content: space-between;
     padding: 88px 0;
+
+    @include desktop {
+        padding: 70px 0;
+    }
+
+    @include phones {
+        flex-direction: column;
+    }
 }
 
 .footer__copyright {
     display: flex;
+    margin-right: 58px;
 
+    @include desktop {
+        flex-direction: column;
+    }
+
+    @include tablets {
+        margin-right: 118px;
+    }
+
+    @include phones {
+        margin-right: 0;
+    }
 }
 
 .footer__copyright-col {
     font-weight: 600;
     font-size: 48px;
-    line-height: 65px;
+    line-height: 1;
     align-items: center;
     color: #464E62;
-    margin-right: 58px;
+    white-space: nowrap;
 }
 
 .footer__copyright-author-name {
@@ -30,12 +50,26 @@
     text-transform: uppercase;
     line-height: 1.7;
     margin-bottom: 18px;
+
+    @include tablets {
+        margin-top: 20px;
+        margin-bottom: 24px;
+    }
+
+    @include phones {
+        margin-bottom: 16px;
+    }
 }
 
 .footer__copyright-author-info {
     font-size: 16px;
     color: #464E62;
     line-height: 1.7;
+
+    @include phones {
+        margin-bottom: 50px;
+    }
+
 }
 
 
@@ -44,36 +78,137 @@
     width: 66%;
     color: rgba(255, 255, 255, 0.45);
     line-height: 1.8;
+
+    @include desktop {
+        width: 75%;
+    }
+
+    @include phones {
+        width: 100%;
+    }
 }
 
+
+.footer__data .footer-menu__item {
+    @include phones {
+        margin-bottom: 30px;
+        margin-right: 90px;
+
+        &:last-child {
+            // margin-right: 0px;
+        }
+
+
+    }
+}
 .footer__data .menu {
     margin-bottom: 61px;
+    color: #ffffff;
+
+    @include desktop {
+        margin-bottom: 52px;
+        margin-top: 12px;
+    }
+
+    @include tablets {
+
+        margin-top: 0;
+        line-height: 1;
+        margin-bottom: 110px;
+    }
+
+    @include phones {
+        margin-bottom: 30px;
+    }
 
 }
 
 .footer__data .menu__list {
     justify-content: start;
-
+    flex-wrap: wrap;
 }
 
 .footer__data-content {
     display: flex;
     justify-content: space-between;
+
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .footer__data-content-col {
     width: 48%;
+
+    @include desktop {
+        width: 56%;
+    }
+
+    &--thin {
+        @include desktop {
+            width: 35%;
+        }
+    }
+
+    @include tablets {
+        width: 100%;
+
+        &:first-child {
+            margin-bottom: 64px;
+        }
+    }
+
+    @include phones {
+        &:first-child {
+            margin-bottom: 38px;
+        }
+    }
 }
 
 .footer__data-content-about {
     margin-bottom: 50px;
+
+    @include tablets {
+        margin-bottom: 14px;
+    }
+
+    @include phones {
+        margin-bottom: 50px;
+    }
 }
 
 .footer__qote-text {
     margin-bottom: 20px;
+
+    @include tablets {
+        margin-bottom: 4px;
+    }
+
+    @include phones {
+        margin-bottom: 24px;
+    }
 }
 
 .footer__qote-autor {
     font-style: italic;
     color: #ffffff;
+}
+
+.footer__data-social {
+    display: flex;
+
+    @include tablets {
+        justify-content: flex-start;
+    }
+}
+
+.social__item.footer-social {
+    margin-right: 24px;
+}
+.footer-link {
+    width: 50%;
+    display: block;
+    height: 50%;
+    text-align: center;
+    transform: translate(50%, 50%);
 }

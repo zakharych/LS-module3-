@@ -1,59 +1,62 @@
-script(type="text/x-template")#slider-container
-  .works-slider(v-if="works.length")
-    display(
-      :works="works",
-      :currentWork="currentWork",
-      :currentIndex="currentIndex"
-      @slide="handleSlide"
-      @slideDirectly="slideDirectly"
-    )
-    info(
-      :currentWork="currentWork"
-    )
+script(type="text/x-template")#preview-container
+    .works__preview(:data-slide="currentIndex + 1")
+        display(
+            :currentWork="currentWork",
+            :works="works",
+            :currentIndex="currentIndex",
+            @slide="slide",
+    
+        )
+        info(
+            :currentWork="currentWork"
+        )
 
-script(type="text/x-template")#slider-display
-  .works-slider__pics(:data-slide="currentIndex + 1")
-    .works-slider__pics-content
-      transition-group(name="fade" tag="div").works-slider__fullpic-container
-        img(:src="`http://localhost:8000/${currentWork.photo}`" :key="currentWork.id").works-slider__fullpic
-      btns(
-        @slide="direction => $emit('slide', direction)"
-      )
+script(type="text/x-template")#preview-display
+    .works__preview-pic
+        img(:src="currentWork.photo").works__preview-img
+        .works__preview-tumbs
+            thumbs(
+                :works="reveseWorks",
+                :currentWork="currentWork",
 
-      thumbs(
-        :works="reversedWorks",
-        :currentWork="currentWork"
-        @slideDirectly="$emit('slideDirectly', $event)"
-      )
-            
-script(type="text/x-template")#slider-thumbs
-  ul.works-slider__thumbs
-    li.works-slider__thumb-item(
-      v-for="(work, index) in works"
-      :class="{active: currentWork.id === work.id}"
-    )
-      a.works-slider__thumb-link(
-        @click="$emit('slideDirectly', work)"
-      )
-        img(:src="`http://localhost:8000/${work.photo}`", alt="").works-slider__thumb
+            )
+        .works__privew-btns
+            btns(                
+                @slide="$emit('slide',$event)" 
+            )
 
-script(type="text/x-template")#slider-btns
-  .works-slider__buttons
-    a(href="#" @click.prevent="$emit('slide', 'next')").works-slider__btn.works-slider__btn_next
-    a(href="#" @click.prevent="$emit('slide', 'prev')").works-slider__btn.works-slider__btn_prev
+script(type="text/x-template")#preview-thumbs
+    ul.thumbs
+        li.thumbs__item(
+            v-for="slide in works" :key="slide.id"
+            :class="{active: currentWork.id === slide.id}")
+            a.thumbs__link
+                img(:src="slide.photo").thumb__img
 
-script(type="text/x-template")#slider-info
-  .works-slider__data
-    tags(
-      :tags="tagsArray"
-    )
-    .works-slider__title {{currentWork.title}}
-    .works-slider__desc
-      p {{currentWork.description}}
-    .works-slider__link 
-      a(href="").iconed-link Посмотреть сайт
+script(type="text/x-template")#preview-btns
+    .square-btns
+        button(
+            type="button"
+            @click="$emit('slide','next')" 
+        ).square-btn__item.square-btn__item--next
+        button(
+            type="button"
+            @click="$emit('slide','prev')" 
+        ).square-btn__item.square-btn__item--prev
 
-script(type="text/x-template")#slider-tags
-  ul.works-slider__tags(v-if="tags.length")
-    li.works-slider__tag-item(v-for="tag in tags")
-      .tag {{tag}}
+script(type="text/x-template")#preview-info
+    .works__preview-info 
+        tags(
+            :tags="tagsArray"
+        )
+        .works__preview-title {{currentWork.title}}
+        .works__preview-desc 
+            p {{currentWork.desc}}
+        a(:href="currentWork.link").iconed-link  Посмотреть сайт
+
+script(type="text/x-template")#preview-tags
+    ul.tags
+        li.tags__item(
+            v-for="tag in tags"
+        )
+            .tag {{tag}}
